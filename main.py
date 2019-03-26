@@ -94,16 +94,14 @@ def handle_message(event):
                     event.reply_token,
                     response_challenge.response_start_firsttime_challenge)
         elif text == 'Subscribe!':
-            if doc['subscribe'] == True:
+            if doc['isSubscribe'] == True:
                 line_bot_api.reply_message(
-                event.reply_token,
-                response_subscribe.response_onDesubscribeClick)
+                    event.reply_token,
+                    response_subscribe.response_onDesubscribeClick)
             else:
                 line_bot_api.reply_message(
-                event.reply_token,
-                response_subscribe.response_onSubscribeClick)
-            ####todo
-            print(event)
+                    event.reply_token,
+                    response_subscribe.response_onSubscribeClick)
     except Exception as e:
         send_to_debug_account(str(e))
 
@@ -112,7 +110,7 @@ def handle_Follow(event):
     try:
         user_ref = user_collection.document(event.source.user_id)
         user_ref.set({
-            'subscribe':False,
+            'isSubscribe':False,
             'gameHighestScore':100000,
             'isPlayingGame':False,
             'isKnowMe':False,
@@ -146,17 +144,26 @@ def handle_Postback(event):
                 event.reply_token,
                 response_aboutme.response_DWTKM)
         elif data =='subscribe_accept':
-            ###todo
-            print(event)
+            line_bot_api.reply_message(
+                event.reply_token,
+                response_subscribe.response_subscribe_accept)
+            line_bot_api.push_message(
+                user_id,
+                response_subscribe.response_subscribe_accept2)
+            user_ref.update({'isSubscribe':True})
         elif data =='subscribe_refuse':
-            ###todo
-            print(event)
+            line_bot_api.reply_message(
+                event.reply_token,
+                response_subscribe.response_subscribe_refuse)
         elif data =='desubscribe_accept':
-            ###todo
-            print(event)
+            line_bot_api.reply_message(
+                event.reply_token,
+                response_subscribe.response_desubscribe_accept)
+            user_ref.update({'isSubscribe':False})
         elif data =='desubscribe_refuse':
-            ###todo
-            print(event)
+            line_bot_api.reply_message(
+                event.reply_token,
+                response_subscribe.response_desubscribe_refuse)
         elif data == 'challenge_start':
             question = response_challenge.genQuestion(doc['gameCurrentQuestionNumber'])
             line_bot_api.reply_message(
@@ -184,17 +191,13 @@ def handle_Postback(event):
                         line_bot_api.push_message(
                             user_id,
                             response_challenge.response_challenge_get_highest_score)
-                        user_ref.update({
-                            'gameHighestScore':totalTime
-                        })
+                        user_ref.update({'gameHighestScore':totalTime})
                     else:
                         line_bot_api.reply_message(
                             event.reply_token,
                             response_challenge.onChallengeDone(totalTime,False))
 
-                    user_ref.update({
-                        'isPlayingGame':False,
-                    })
+                    user_ref.update({'isPlayingGame':False})
                 else:
                     question = response_challenge.genQuestion(doc['gameCurrentQuestionNumber']+1)
                     line_bot_api.reply_message(
@@ -226,8 +229,7 @@ def default(event):
 def send_to_debug_account(text):
     line_bot_api.push_message(debug_user_id,
         TextSendMessage(
-            text="Text : "+text
-        ))
+            text="Text : "+text))
 
 if __name__ == "__main__":
     app.run(host='127.0.0.1',port=3000)

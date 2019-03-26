@@ -1,19 +1,19 @@
 from linebot.models import (
-    TextSendMessage, TemplateSendMessage, ConfirmTemplate, PostbackAction
+    TextSendMessage, TemplateSendMessage, ConfirmTemplate, PostbackAction, StickerSendMessage
 )
 
 response_onSubscribeClick = TemplateSendMessage(
-    alt_text='Sorry, This message can show on mobile :)',
+    alt_text='Wnat to subscribe?',
     template=ConfirmTemplate(
-        text="Subscribe to get more game information?\nI will recommand you a casual game everyday!",
+        text="I was a casual game developer before.\n\nI can recommand a casual game to you everyday!\n\nWould you like to know?",
         actions=[
             PostbackAction(
-                label='Yes',
+                label='Yes!',
                 text='Yes!',
                 data='subscribe_accept' # Want to know me.
             ),
             PostbackAction(
-                label='No',
+                label='No~',
                 text='No~',
                 data='subscribe_refuse' # Dont wnt to know me.
             )
@@ -22,7 +22,7 @@ response_onSubscribeClick = TemplateSendMessage(
 )
 
 response_onDesubscribeClick = TemplateSendMessage(
-    alt_text='Sorry, This message can show on mobile :)',
+    alt_text='Want to desubscribe?',
     template=ConfirmTemplate(
         text="Subscribe to get more game information?\nI will recommand you a casual game everyday!",
         actions=[
@@ -41,15 +41,20 @@ response_onDesubscribeClick = TemplateSendMessage(
 )
 
 response_subscribe_refuse = TextSendMessage(
-	text='OK, You can subscribe whenever you want~ \uDBC0\uDC8D'
+	text='OK, You can subscribe whenever you want \uDBC0\uDC8D'
 )
 
 response_subscribe_accept = TextSendMessage(
-    text='This is todays'
+    text='OK,i will send information to you at everyday 10am.'
+)
+
+response_subscribe_accept2 = StickerSendMessage(
+    package_id='1',
+    sticker_id='117'
 )
 
 response_desubscribe_accept = TextSendMessage(
-    text="You're desubscribe now~\nYou can subscribe again when ever you want!"
+    text="You're desubscribe now~\nYou can subscribe again whenever you want!"
 )
 
 response_desubscribe_refuse = TextSendMessage(

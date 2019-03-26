@@ -1,5 +1,5 @@
 from linebot.models import (
-    TemplateSendMessage, ImageCarouselTemplate, CarouselTemplate,
+    TextSendMessage, TemplateSendMessage, ImageCarouselTemplate, CarouselTemplate,
     CarouselColumn, ButtonsTemplate, PostbackTemplateAction, MessageTemplateAction, URITemplateAction, URIAction, ImageCarouselColumn
 )
 
@@ -10,7 +10,7 @@ response_porjects_carousel = TemplateSendMessage(
             CarouselColumn(
                 thumbnail_image_url='https://lh3.googleusercontent.com/nAp1i1NgfPxbreIQnlZTwVi2cqzbE25IQtTlq7Jmjk7SuGRWgerp2rsI274Ggtpzhvo',
                 title="I'm Ping Pong King :)",
-                text='AAAAA',
+                text='Make some finger exercise and release the stress of the day!',
                 actions=[
                     URIAction(
                         label='Try Out!(Android)',
@@ -25,7 +25,7 @@ response_porjects_carousel = TemplateSendMessage(
             CarouselColumn(
                 thumbnail_image_url='https://3.bp.blogspot.com/-ruZzgX3ootA/W3U3VnAXfyI/AAAAAAAAAWI/jVX8SvzcmXgO92Z5P9VGLszOr3hHc0FpACLcBGAs/s1600/com.orangenose.trick.jpg',
                 title='Triky Test 2',
-                text='description2',
+                text="87% people can't solve it, can you?",
                 actions=[
                     URIAction(
                         label='Try Out!(Android)',
