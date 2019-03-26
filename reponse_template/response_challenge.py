@@ -6,7 +6,7 @@ from linebot.models import (
 response_start_another_challenge = TemplateSendMessage(
     alt_text='Sorry, This message can show on mobile :)',
     template=ConfirmTemplate(
-        text='You didnt finish last challenge, keep going or restart?',
+        text='You didnt finish last challenge, resume or restart?',
         actions=[
             PostbackAction(
                 label='Resume',
@@ -16,7 +16,7 @@ response_start_another_challenge = TemplateSendMessage(
             PostbackAction(
                 label='Restart',
                 text='Restart',
-                data='challenge_start' # Want to know me.
+                data='challenge_restart' # Want to know me.
             )
         ]
     )
@@ -58,7 +58,7 @@ response_challenge_done = TemplateSendMessage(
     )
 )
 
-response_challenge_get_highest_score = response_when_wrong = TextSendMessage(
+response_challenge_get_highest_score = TextSendMessage(
 	text="Wow, it's the shortest time now \uDBC0\uDC85"
 )
 
@@ -152,3 +152,23 @@ def genQuestion(questionNumber):
             )
         )
         return [response,question,'answer_No']
+
+def onResume(question):
+    return TemplateSendMessage(
+        alt_text='Sorry, This message can show on mobile :)',
+        template=ConfirmTemplate(
+            text=str(question),
+            actions=[
+                PostbackAction(
+                    label='Yes!',
+                    text='Yes!',
+                    data='answer_Yes' # Want to know me.
+                ),
+                PostbackAction(
+                    label='No!',
+                    text='No!',
+                    data='answer_No' # Dont wnt to know me.
+                )
+            ]
+        )
+    )

@@ -5,7 +5,7 @@ from linebot.models import (
 response_onSubscribeClick = TemplateSendMessage(
     alt_text='Wnat to subscribe?',
     template=ConfirmTemplate(
-        text="I was a casual game developer before.\n\nI can recommand a casual game to you everyday!\n\nWould you like to know?",
+        text="I was a casual game developer before.\n\nI can recommand a casual game to you everyday!\n\nWant to subscribe?",
         actions=[
             PostbackAction(
                 label='Yes!',
@@ -24,16 +24,16 @@ response_onSubscribeClick = TemplateSendMessage(
 response_onDesubscribeClick = TemplateSendMessage(
     alt_text='Want to desubscribe?',
     template=ConfirmTemplate(
-        text="Subscribe to get more game information?\nI will recommand you a casual game everyday!",
+        text="You already subscribe, you want to unsubscribe?",
         actions=[
             PostbackAction(
                 label='Yes',
-                text='Yes!',
+                text='Yes',
                 data='desubscribe_accept' # Want to know me.
             ),
             PostbackAction(
                 label='No',
-                text='No~',
+                text='No',
                 data='desubscribe_refuse' # Dont wnt to know me.
             )
         ]
@@ -45,7 +45,7 @@ response_subscribe_refuse = TextSendMessage(
 )
 
 response_subscribe_accept = TextSendMessage(
-    text='OK,i will send information to you at everyday 10am.'
+    text='OK,i will send information to you at 10am everyday.'
 )
 
 response_subscribe_accept2 = StickerSendMessage(
@@ -54,7 +54,7 @@ response_subscribe_accept2 = StickerSendMessage(
 )
 
 response_desubscribe_accept = TextSendMessage(
-    text="You're desubscribe now~\nYou can subscribe again whenever you want!"
+    text="You unsubscribe now~\nYou can subscribe again whenever you want!"
 )
 
 response_desubscribe_refuse = TextSendMessage(

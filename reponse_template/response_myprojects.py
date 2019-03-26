@@ -10,14 +10,14 @@ response_porjects_carousel = TemplateSendMessage(
             CarouselColumn(
                 thumbnail_image_url='https://lh3.googleusercontent.com/nAp1i1NgfPxbreIQnlZTwVi2cqzbE25IQtTlq7Jmjk7SuGRWgerp2rsI274Ggtpzhvo',
                 title="I'm Ping Pong King :)",
-                text='Make some finger exercise and release the stress of the day!',
+                text='Do some finger exercise and release the stress of the day!',
                 actions=[
                     URIAction(
-                        label='Try Out!(Android)',
+                        label='Try Out! (Android)',
                         uri="http://orangenose.page.link/pingpongkingbtn01?fbclid=IwAR2mbrp-vzUgS9vj9cbLJwSPY1xJ3SIm-IUUrzQClyRKiexwmqsC1IVIhfs"
                     ),
                     URIAction(
-                        label='Try Out!(IOS)',
+                        label='Try Out! (IOS)',
                         uri="http://orangenose.page.link/pingpongkingbtn01?fbclid=IwAR2mbrp-vzUgS9vj9cbLJwSPY1xJ3SIm-IUUrzQClyRKiexwmqsC1IVIhfs"
                     )
                 ]
@@ -25,14 +25,14 @@ response_porjects_carousel = TemplateSendMessage(
             CarouselColumn(
                 thumbnail_image_url='https://3.bp.blogspot.com/-ruZzgX3ootA/W3U3VnAXfyI/AAAAAAAAAWI/jVX8SvzcmXgO92Z5P9VGLszOr3hHc0FpACLcBGAs/s1600/com.orangenose.trick.jpg',
                 title='Triky Test 2',
-                text="87% people can't solve it, can you?",
+                text="87% people can't solve it.\nCan you solve it?",
                 actions=[
                     URIAction(
-                        label='Try Out!(Android)',
+                        label='Try Out! (Android)',
                         uri='https://goo.gl/VwTCRh'
                     ),
                     URIAction(
-                        label='Try Out!(IOS)',
+                        label='Try Out! (IOS)',
                         uri='https://goo.gl/kGt8V5'
                     )
                 ]
