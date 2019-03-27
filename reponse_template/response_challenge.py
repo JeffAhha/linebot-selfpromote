@@ -59,7 +59,7 @@ response_challenge_done = TemplateSendMessage(
 )
 
 response_challenge_get_highest_score = TextSendMessage(
-	text="Wow, it's the shortest time now \uDBC0\uDC85"
+	text="Wow, it's the shortest time ever spent \uDBC0\uDC85"
 )
 
 def onChallengeDone(time,isBestScore):
@@ -75,8 +75,7 @@ def onChallengeDone(time,isBestScore):
                 actions=[
                     PostbackAction(
                         label='See Best Score',
-                        text='See Best Score',
-                        data='challenge_Best_Score' # Want to know me.
+                        text='See Best Score'
                     )
                 ]
             )
@@ -171,4 +170,9 @@ def onResume(question):
                 )
             ]
         )
+    )
+
+def onSeeBestScoreClick(score):
+    return TextSendMessage(
+    	text='Your best score is {0}s!'.format(score)
     )

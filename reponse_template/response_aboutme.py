@@ -11,7 +11,7 @@ response_WTKM2 = TextSendMessage(
 )
 
 response_WTKM3 = TextSendMessage(
-	text="After complete my dream of making game, I enter GIEE of National Taiwan University to finish my master degree."
+	text="After completing my dream of making game, I enter GIEE of National Taiwan University to finish my master degree."
 )
 
 response_WTKM4 = TemplateSendMessage(alt_text="I'm currently looking for an intern oppertunity!",

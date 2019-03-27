@@ -45,7 +45,7 @@ response_subscribe_refuse = TextSendMessage(
 )
 
 response_subscribe_accept = TextSendMessage(
-    text='OK,i will send information to you at 10am everyday.'
+    text='OK,i will send information to you at 2 pm everyday.'
 )
 
 response_subscribe_accept2 = StickerSendMessage(
@@ -78,7 +78,7 @@ def pushGameInfo(url_IOS,url_Android,url_Image,title,description):
                     uri=url_IOS
                 )
             ],
-            image_size='cover',
+            image_size='contain',
             imageAspectRatio='square'
         )
     )

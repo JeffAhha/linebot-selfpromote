@@ -43,5 +43,5 @@ response_porjects_carousel = TemplateSendMessage(
 )
 
 response_introduce = TextSendMessage(
-	text='Those are the projects I have participated in, hope you enjoy it.'
+	text='Those are the projects I have participated in, hope you enjoy them.'
 )
