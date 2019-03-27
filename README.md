@@ -1,5 +1,5 @@
-# linebot-selfpromote
-This linebot is written in python.
+# JEFF Simulator
+This linebot is called "JEFF Simulator" and written in python.
 
 It's a one week project to let other people know more about me~
 
