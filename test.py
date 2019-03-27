@@ -2,18 +2,28 @@ import threading
 import time
 from reponse_template import response_challenge
 
-def gamefunction(user_id):
-    counter = 0
-    while (counter < 10):
-        counter = counter + 1
-        print(counter)
-        time.sleep(1)
+import settings
+from linebot import (
+    LineBotApi, WebhookHandler
+)
+from linebot.exceptions import (
+    InvalidSignatureError
+)
+from linebot.models import (
+    MessageEvent, FollowEvent, PostbackEvent,
+    TextMessage, TextSendMessage, StickerSendMessage, TemplateSendMessage, ImageCarouselTemplate, CarouselTemplate,
+    CarouselColumn, ButtonsTemplate, PostbackTemplateAction, MessageTemplateAction, URITemplateAction
+)
+
+line_bot_api = LineBotApi(settings.line_channel_secret)
+handler = WebhookHandler(settings.line_webhook_secret)
 
 
-question = response_challenge.genQuestion(10)
-print(question[0])
-print('\n====================================\n')
-print(question[1])
-print('\n====================================\n')
-print(question[2])
-print('\n====================================\n')
+def main():
+    line_bot_api.push_message(
+        settings.line_debug_userid,
+        TextSendMessage(
+        	text='OK, You can subscribe whenever you want \uDBC0\uDC8D'
+        ))
+
+main()

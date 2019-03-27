@@ -1,0 +1,5 @@
+cron:
+- description: "send information everyday"
+  url: /send_subscribe
+  schedule: every day 16:00
+  timezone: Asia/Shanghai

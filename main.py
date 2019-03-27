@@ -40,6 +40,7 @@ from linebot.models import (
 
 firebase_admin.initialize_app()
 user_collection = firestore.client().collection('userData')
+game_info_collection = firestore.client().collection('gameInformation')
 
 line_bot_api = LineBotApi(settings.line_channel_secret)
 handler = WebhookHandler(settings.line_webhook_secret)
@@ -380,6 +381,26 @@ def handle_Postback(event):
 @handler.default()
 def default(event):
     print(event)
+
+@app.route("/send_subscribe",methods=['GET'])
+def send_subscribe():
+    game_info_doc = game_info_collection.document('Pm4OlI6Ni2EctqZ2eS9v').get().to_dict()
+    query_userid_ref = user_collection.where('isSubscribe','==',True).get()
+    user_list = []
+
+    for data in query_userid_ref:
+        user_list.append(str(data.id))
+
+    if len(user_list) != 0:
+        line_bot_api.multicast(user_list,
+            response_subscribe.pushGameInfo(
+                game_info_doc['url_IOS'],
+                game_info_doc['url_Android'],
+                game_info_doc['url_Image'],
+                game_info_doc['title'],
+                game_info_doc['description']))
+
+
 
 def send_to_debug_account(text):
     line_bot_api.push_message(debug_user_id,

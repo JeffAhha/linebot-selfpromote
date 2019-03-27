@@ -1,5 +1,5 @@
 from linebot.models import (
-    TextSendMessage, TemplateSendMessage, ConfirmTemplate, PostbackAction, StickerSendMessage
+    TextSendMessage, TemplateSendMessage, ConfirmTemplate, PostbackAction, StickerSendMessage, ButtonsTemplate, URIAction
 )
 
 response_onSubscribeClick = TemplateSendMessage(
@@ -60,3 +60,25 @@ response_desubscribe_accept = TextSendMessage(
 response_desubscribe_refuse = TextSendMessage(
     text="OK, I will keep sending game information to you everyday~"
 )
+
+def pushGameInfo(url_IOS,url_Android,url_Image,title,description):
+    return TemplateSendMessage(
+        alt_text='Sorry, this message can only show on mobile.',
+        template=ButtonsTemplate(
+            thumbnail_image_url=url_Image,
+            title=title,
+            text=description,
+            actions=[
+                URIAction(
+                    label='Try Out! (Android)',
+                    uri=url_Android
+                ),
+                URIAction(
+                    label='Try Out! (IOS)',
+                    uri=url_IOS
+                )
+            ],
+            image_size='cover',
+            imageAspectRatio='square'
+        )
+    )
