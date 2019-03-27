@@ -1,6 +1,6 @@
 from random import randint
 from linebot.models import (
-    TextSendMessage, TemplateSendMessage, ConfirmTemplate, ButtonsTemplate, PostbackAction
+    TextSendMessage, TemplateSendMessage, ConfirmTemplate, ButtonsTemplate, PostbackAction, MessageAction
 )
 
 response_start_another_challenge = TemplateSendMessage(
@@ -73,7 +73,7 @@ def onChallengeDone(time,isBestScore):
             template=ButtonsTemplate(
                 text='Well done, You finish the challenge in {0} seconds!'.format(time),
                 actions=[
-                    PostbackAction(
+                    MessageAction(
                         label='See Best Score',
                         text='See Best Score'
                     )

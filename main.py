@@ -117,7 +117,7 @@ def handle_message(event):
             line_bot_api.reply_message(
                 event.reply_token,
                 response_onfollow.on_follow(profile.display_name))
-        elif text == 'See Best Score' or text == 'best score' or 'Best Score':
+        elif text == 'See Best Score' or text == 'best score' or text =='Best Score':
             if doc['gameHighestScore'] != 100000:
                 line_bot_api.reply_message(
                     event.reply_token,
