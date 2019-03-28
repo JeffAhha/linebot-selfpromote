@@ -9,7 +9,7 @@ Hope you enjoy it!
 
 ### About this project
 * use google app engine as a webhook 
-* use google cron to do some routine work (Ex: send message at same time everyday)
+* use google cron to scheduling (Ex: send message at same time everyday)
 * use firestore as database
 
 ### You can add the linebot to friend through the QRCode below!
