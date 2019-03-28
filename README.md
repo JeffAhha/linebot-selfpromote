@@ -3,6 +3,8 @@ This linebot is called "JEFF Simulator" and written in python.
 
 It's a one week project to let other people know more about me~
 
+The bot is under developer trail, maximum number of friend can only up to 50.
+
 Hope you enjoy it!
 
 ### About this project
